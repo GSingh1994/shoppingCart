@@ -10,7 +10,7 @@ export default function Catalog() {
   }, []);
 
   const fetchData = async () => {
-    const response = await fetch("https://jsonplaceholder.typicode.com/todos/");
+    const response = await fetch("https://fakestoreapi.com/products/");
     const data = await response.json();
     setStoreData(data);
   };
