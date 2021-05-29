@@ -3,7 +3,7 @@ import Navbar from "./Navbar";
 import { Link } from "react-router-dom";
 
 export default function Catalog() {
-  const [storeData, setStoreData] = useState([]);
+  const [storeData, setStoreData] = useState<any[]>([]);
 
   useEffect(() => {
     fetchData();

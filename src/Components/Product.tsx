@@ -1,8 +1,16 @@
 import { useEffect, useState } from "react";
 import Navbar from "./Navbar";
-export default function Product({ match }) {
+
+type AppProps = {
+  match: any;
+};
+
+export default function Product({ match }: AppProps) {
   const [item, setItem] = useState([]);
-  useEffect(() => fetchItem(), []);
+
+  useEffect(() => {
+    fetchItem();
+  }, []);
 
   const fetchItem = async () => {
     const response = await fetch(
