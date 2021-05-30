@@ -1,9 +1,15 @@
+import React from "react";
 import { useEffect, useState } from "react";
 import Navbar from "./Navbar";
 import { Link } from "react-router-dom";
 
-export default function Catalog() {
-  const [storeData, setStoreData] = useState<any[]>([]);
+interface StateProperties {
+  id: number;
+  title: string;
+}
+
+const Catalog: React.FC = () => {
+  const [storeData, setStoreData] = useState<StateProperties[]>([]);
 
   useEffect(() => {
     fetchData();
@@ -27,4 +33,5 @@ export default function Catalog() {
       ))}
     </div>
   );
-}
+};
+export default Catalog;

@@ -1,13 +1,21 @@
+import React from "react";
 import { useEffect, useState } from "react";
 import Navbar from "./Navbar";
 
-type AppProps = {
+interface Props {
   match: any;
-};
+}
 
-export default function Product({ match }: AppProps) {
-  const [item, setItem] = useState([]);
+interface StateProperties {
+  item: {
+    title: string;
+    image: string;
+    description: string;
+  };
+}
 
+const Product: React.FC<Props> = ({ match }) => {
+  const [item, setItem] = useState<StateProperties["item"]>([] as any);
   useEffect(() => {
     fetchItem();
   }, []);
@@ -27,4 +35,6 @@ export default function Product({ match }: AppProps) {
       <p>{item.description}</p>
     </div>
   );
-}
+};
+
+export default Product;

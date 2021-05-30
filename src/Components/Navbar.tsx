@@ -1,5 +1,6 @@
+import React from "react";
 import { Link } from "react-router-dom";
-export default function Header() {
+const Navbar: React.FC = () => {
   return (
     <div className="Navbar">
       <nav>
@@ -14,4 +15,5 @@ export default function Header() {
       </nav>
     </div>
   );
-}
+};
+export default Navbar;
