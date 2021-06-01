@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 interface StateProperties {
   id: number;
   title: string;
+  image: string;
 }
 
 const Catalog: React.FC = () => {
@@ -22,16 +23,25 @@ const Catalog: React.FC = () => {
   };
 
   return (
-    <div>
+    <>
       <Navbar />
-      {storeData.map((item) => (
-        <ul key={item.id}>
-          <Link to={`/catalog/${item.id}`}>
-            <li>{item.title}</li>
-          </Link>
-        </ul>
-      ))}
-    </div>
+      <div className="container mx-auto px-40 py-20">
+        <div className="grid gap-10 grid-cols-4">
+          {storeData.map((item) => (
+            <div key={item.id} className="shadow-2xl max-w-sm rounded p-5">
+              <Link to={`/catalog/${item.id}`}>
+                <img
+                  className="object-cover	w-60 h-60"
+                  src={item.image}
+                  alt={item.title}
+                />
+                <h4>{item.title}</h4>
+              </Link>
+            </div>
+          ))}
+        </div>
+      </div>
+    </>
   );
 };
 export default Catalog;
