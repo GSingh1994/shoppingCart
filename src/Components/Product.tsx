@@ -28,12 +28,14 @@ const Product: React.FC<Props> = ({ match }) => {
     setItem(data);
   };
   return (
-    <div>
+    <>
       <Navbar />
-      <h1>{item.title}</h1>
-      <img src={item.image} alt="" />
-      <p>{item.description}</p>
-    </div>
+      <div className="pt-20">
+        <div>{item.title}</div>
+        <img className="w-80 h-80" src={item.image} alt={item.title} />
+        <p>{item.description}</p>
+      </div>
+    </>
   );
 };
 

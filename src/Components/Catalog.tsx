@@ -7,6 +7,7 @@ interface StateProperties {
   id: number;
   title: string;
   image: string;
+  price: number;
 }
 
 const Catalog: React.FC = () => {
@@ -25,17 +26,17 @@ const Catalog: React.FC = () => {
   return (
     <>
       <Navbar />
-      <div className="container mx-auto px-40 py-20">
-        <div className="grid gap-10 grid-cols-4">
+      <div className="container mx-auto px-60 py-40">
+        <div className="grid gap-10 grid-cols-3">
           {storeData.map((item) => (
-            <div key={item.id} className="shadow-2xl max-w-sm rounded p-5">
+            <div
+              key={item.id}
+              className="shadow-lg transition duration-300 ease-in-out hover:shadow-2xl max-w-sm rounded p-5"
+            >
               <Link to={`/catalog/${item.id}`}>
-                <img
-                  className="object-cover	w-60 h-60"
-                  src={item.image}
-                  alt={item.title}
-                />
+                <img className="h-60 p-10" src={item.image} alt={item.title} />
                 <h4>{item.title}</h4>
+                <div className="text-blue-500">${item.price}</div>
               </Link>
             </div>
           ))}
