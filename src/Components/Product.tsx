@@ -1,4 +1,3 @@
-import React from "react";
 import { useEffect, useState } from "react";
 import Navbar from "./Navbar";
 
@@ -6,7 +5,7 @@ interface Props {
   match: any;
 }
 
-interface StateProperties {
+interface StateProps {
   item: {
     title: string;
     image: string;
@@ -14,8 +13,8 @@ interface StateProperties {
   };
 }
 
-const Product: React.FC<Props> = ({ match }) => {
-  const [item, setItem] = useState<StateProperties["item"]>([] as any);
+export default function Product({ match }: Props) {
+  const [item, setItem] = useState<StateProps["item"]>([] as any);
   useEffect(() => {
     fetchItem();
   }, []);
@@ -37,6 +36,4 @@ const Product: React.FC<Props> = ({ match }) => {
       </div>
     </>
   );
-};
-
-export default Product;
+}
