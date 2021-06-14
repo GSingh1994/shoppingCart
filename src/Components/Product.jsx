@@ -1,20 +1,8 @@
 import { useEffect, useState } from "react";
 import Navbar from "./Navbar";
 
-interface Props {
-  match: any;
-}
-
-interface StateProps {
-  item: {
-    title: string;
-    image: string;
-    description: string;
-  };
-}
-
-export default function Product({ match }: Props) {
-  const [item, setItem] = useState<StateProps["item"]>([] as any);
+export default function Product({ match }) {
+  const [item, setItem] = useState([]);
   useEffect(() => {
     fetchItem();
   }, []);

@@ -3,15 +3,8 @@ import Navbar from "./Navbar";
 import { Link } from "react-router-dom";
 import Sidebar from "./Sidebar";
 
-interface StateProps {
-  id: number;
-  title: string;
-  image: string;
-  price: number;
-}
-
 export default function Catalog() {
-  const [storeData, setStoreData] = useState<StateProps[]>([]);
+  const [storeData, setStoreData] = useState([]);
 
   useEffect(() => {
     fetchData();

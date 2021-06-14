@@ -1,10 +1,5 @@
 import { useEffect, useState } from "react";
 
-// interface stateProps {
-//   category: string;
-//   jewelery: string;
-// }
-
 export default function Sidebar() {
   const [storeCategory, setStoreCategory] = useState([]);
 
@@ -14,7 +9,7 @@ export default function Sidebar() {
     fetchCategory(category);
   }, [category]);
 
-  const fetchCategory = async (category: string) => {
+  const fetchCategory = async (category) => {
     const response = await fetch(
       `https://fakestoreapi.com/products/category/${category}`
     );
