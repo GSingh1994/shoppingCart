@@ -16,11 +16,17 @@ export default function Catalog() {
     setStoreData(data);
   };
 
+  function handleClick(category) {
+    setStoreData(category);
+  }
+
   return (
     <>
       <Navbar />
+
       <div className="flex container mx-auto px-30 py-40">
-        <Sidebar />
+        <Sidebar changeCategory={handleClick} />
+
         <div className="flex-grow grid gap-10 grid-cols-3">
           {storeData.map((item) => (
             <div

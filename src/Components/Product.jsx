@@ -3,6 +3,7 @@ import Navbar from "./Navbar";
 
 export default function Product({ match }) {
   const [item, setItem] = useState([]);
+
   useEffect(() => {
     fetchItem();
   }, []);
