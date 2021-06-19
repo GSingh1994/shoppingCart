@@ -31,11 +31,15 @@ export default function Catalog() {
           {storeData.map((item) => (
             <div
               key={item.id}
-              className="shadow-lg transition duration-300 ease-in-out hover:shadow-2xl max-w-sm rounded p-5"
+              className=" overflow-hidden  shadow-lg  rounded p-4 transition duration-300 ease-in-out hover:shadow-2xl"
             >
               <Link to={`/catalog/${item.id}`}>
-                <img className="h-60 p-10" src={item.image} alt={item.title} />
-                <h4>{item.title}</h4>
+                <img
+                  className="w-auto h-72 relative m-auto  transition-transform duration-300 transform hover:scale-105"
+                  src={item.image}
+                  alt={item.title}
+                />
+                <h4 className="mt-6">{item.title}</h4>
                 <div className="text-blue-500">${item.price}</div>
               </Link>
             </div>
@@ -45,3 +49,4 @@ export default function Catalog() {
     </>
   );
 }
+//

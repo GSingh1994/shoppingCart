@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Navbar from "./Navbar";
+import Cart from "./Cart";
 
 export default function Product({ match }) {
   const [item, setItem] = useState([]);
@@ -15,6 +16,10 @@ export default function Product({ match }) {
     const data = await response.json();
     setItem(data);
   };
+
+  const handleClick = () => {
+    console.log("yeet");
+  };
   return (
     <>
       <Navbar />
@@ -22,6 +27,11 @@ export default function Product({ match }) {
         <div>{item.title}</div>
         <img className="w-80 h-80" src={item.image} alt={item.title} />
         <p>{item.description}</p>
+        <button onClick={handleClick} className="ring-2 p-1	">
+          Add To Cart
+        </button>
+
+        <Cart title={item.title} image={item.image} />
       </div>
     </>
   );
