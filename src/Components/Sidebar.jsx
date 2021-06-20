@@ -22,8 +22,8 @@ export default function Sidebar({ changeCategory }) {
 
   return (
     <>
-      <div className="font-semibold text-lg uppercase w-70 p-2.5 mr-4 flex flex-col justify-between h-80">
-        <div className="text-2xl">
+      <div className=" font-semibold text-lg uppercase p-2.5  flex flex-col justify-between h-80">
+        <div className="text-2xl w-80 ">
           Shop/{storeCategory.length ? storeCategory : "All Products"}
         </div>
         <div

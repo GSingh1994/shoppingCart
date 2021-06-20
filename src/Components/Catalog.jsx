@@ -24,24 +24,32 @@ export default function Catalog() {
     <>
       <Navbar />
 
-      <div className="flex container mx-auto px-30 py-40">
+      <div className="flex container mx-auto py-40">
         <Sidebar changeCategory={handleClick} />
 
-        <div className="flex-grow grid gap-10 grid-cols-3">
+        <div className=" grid gap-16 grid-cols-3">
           {storeData.map((item) => (
             <div
               key={item.id}
-              className=" overflow-hidden  shadow-lg  rounded p-4 transition duration-300 ease-in-out hover:shadow-2xl"
+              className=" relative overflow-hidden  shadow-lg  rounded  transition duration-300 ease-in-out hover:shadow-2xl"
             >
               <Link to={`/catalog/${item.id}`}>
                 <img
-                  className="w-auto h-72 relative m-auto  transition-transform duration-300 transform hover:scale-105"
+                  className="w-auto px-10 h-72 relative m-auto mb-36 transition-transform duration-300 transform hover:scale-105"
                   src={item.image}
                   alt={item.title}
                 />
-                <h4 className="mt-6">{item.title}</h4>
-                <div className="text-blue-500">${item.price}</div>
               </Link>
+
+              <div className="absolute bottom-0	w-full 	text-center">
+                <h4 className="px-5 font-bold	truncate overflow-hidden ">
+                  {item.title}
+                </h4>
+                <div className="text-blue-500 py-1.5">${item.price}</div>
+                <div className=" bg-black text-white uppercase tracking-wide	 p-3 m-1 	">
+                  Add To Cart
+                </div>
+              </div>
             </div>
           ))}
         </div>
