@@ -20,6 +20,10 @@ export default function Catalog() {
     setStoreData(category);
   }
 
+  function toggleDrawer() {
+    console.log("yeett");
+  }
+
   return (
     <>
       <Navbar />
@@ -46,7 +50,11 @@ export default function Catalog() {
                   {item.title}
                 </h4>
                 <div className="text-blue-500 py-1.5">${item.price}</div>
-                <div className=" bg-black text-white uppercase tracking-wide	 p-3 m-1 	">
+
+                <div
+                  onClick={toggleDrawer}
+                  className="cursor-pointer bg-black text-white uppercase tracking-wide	 p-3 m-1 	"
+                >
                   Add To Cart
                 </div>
               </div>
