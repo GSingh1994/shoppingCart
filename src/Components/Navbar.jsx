@@ -39,12 +39,14 @@ export default function Navbar({ openDrawer, cart }) {
         isOpen={paneOpen}
         onRequestClose={() => setPaneOpen(false)}
       >
-        {cart.map((item, i) => (
-          <div key={i}>
-            <div>{item.title}</div>
-            <div>{item.price}</div>
-          </div>
-        ))}
+        {cart //Check if the list is not empty
+          ? cart.map((item, i) => (
+              <div key={i}>
+                <div>{item.title}</div>
+                <div>{item.price}</div>
+              </div>
+            ))
+          : null}
       </SlidingPane>
     </>
   );
