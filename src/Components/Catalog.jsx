@@ -31,9 +31,19 @@ export default function Catalog() {
     }
   }, [openDrawer]);
 
+  // Add items to cart
+  const [cart, setCart] = useState([]);
+  const handleCart = (itemId, itemTitle, itemPrice, itemImage) => {
+    setOpenDrawer(true);
+    setCart([
+      ...cart,
+      { id: itemId, title: itemTitle, image: itemImage, price: itemPrice },
+    ]);
+  };
+
   return (
     <>
-      <Navbar openDrawer={openDrawer} />
+      <Navbar openDrawer={openDrawer} cart={cart} />
 
       <main className="flex container mx-auto py-40">
         <Sidebar changeCategory={handleClick} />
@@ -59,7 +69,9 @@ export default function Catalog() {
                 <div className="text-blue-500 py-1.5">${item.price}</div>
 
                 <button
-                  onClick={() => setOpenDrawer(true)}
+                  onClick={() =>
+                    handleCart(item.id, item.title, item.price, item.image)
+                  }
                   className="cursor-pointer bg-black text-white uppercase tracking-wide	 p-3 m-1 	"
                 >
                   Add To Cart

@@ -3,12 +3,13 @@ import { useState, useEffect } from "react";
 import SlidingPane from "react-sliding-pane";
 import "react-sliding-pane/dist/react-sliding-pane.css";
 
-export default function Navbar({ openDrawer }) {
+export default function Navbar({ openDrawer, cart }) {
   const [paneOpen, setPaneOpen] = useState(false);
   useEffect(() => {
     if (openDrawer) {
       setPaneOpen(openDrawer);
     }
+    console.log(cart);
   }, [openDrawer]);
   return (
     <>
@@ -38,8 +39,12 @@ export default function Navbar({ openDrawer }) {
         isOpen={paneOpen}
         onRequestClose={() => setPaneOpen(false)}
       >
-        <div>And I am pane content. BTW, what rocks?</div>
-        <br />
+        {cart.map((item, i) => (
+          <div key={i}>
+            <div>{item.title}</div>
+            <div>{item.price}</div>
+          </div>
+        ))}
       </SlidingPane>
     </>
   );
