@@ -35,15 +35,16 @@ export default function Navbar({ openDrawer, cart }) {
         </nav>
       </header>
       <SlidingPane
-        width="400px"
+        width="20rem"
         isOpen={paneOpen}
         onRequestClose={() => setPaneOpen(false)}
       >
         {cart //Check if the list is not empty
           ? cart.map((item, i) => (
-              <div key={i}>
-                <div>{item.title}</div>
+              <div key={i} className="text-center">
+                <div className="truncate">{item.title}</div>
                 <div>{item.price}</div>
+                <img width="50rem" src={item.image} alt={item.title} />
               </div>
             ))
           : null}
