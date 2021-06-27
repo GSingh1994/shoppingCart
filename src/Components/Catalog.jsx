@@ -20,15 +20,22 @@ export default function Catalog() {
     setStoreData(category);
   }
 
-  function toggleDrawer() {
-    console.log("yeett");
-  }
+  // open drawer upon adding items to cart
+  const [openDrawer, setOpenDrawer] = useState(false);
+  useEffect(() => {
+    if (openDrawer) {
+      const timer = setTimeout(() => {
+        setOpenDrawer(false);
+      }, 1000);
+      return () => clearTimeout(timer);
+    }
+  }, [openDrawer]);
 
   return (
     <>
-      <Navbar />
+      <Navbar openDrawer={openDrawer} />
 
-      <div className="flex container mx-auto py-40">
+      <main className="flex container mx-auto py-40">
         <Sidebar changeCategory={handleClick} />
 
         <div className=" grid gap-16 grid-cols-3">
@@ -51,18 +58,17 @@ export default function Catalog() {
                 </h4>
                 <div className="text-blue-500 py-1.5">${item.price}</div>
 
-                <div
-                  onClick={toggleDrawer}
+                <button
+                  onClick={() => setOpenDrawer(true)}
                   className="cursor-pointer bg-black text-white uppercase tracking-wide	 p-3 m-1 	"
                 >
                   Add To Cart
-                </div>
+                </button>
               </div>
             </div>
           ))}
         </div>
-      </div>
+      </main>
     </>
   );
 }
-//

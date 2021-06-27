@@ -27,7 +27,7 @@ export default function Product({ match }) {
         <div>{item.title}</div>
         <img className="w-80 h-80" src={item.image} alt={item.title} />
         <p>{item.description}</p>
-        <button onClick={handleClick} className="ring-2 p-1	">
+        <button onClick={handleClick} className="ring-2 p-1	uppercase">
           Add To Cart
         </button>
 
