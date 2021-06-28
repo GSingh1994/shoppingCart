@@ -1,16 +1,9 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
-import SlidingPane from "react-sliding-pane";
-import "react-sliding-pane/dist/react-sliding-pane.css";
+import CartPage from "./CartPage";
 
 export default function Navbar({ openDrawer, cart }) {
-  const [paneOpen, setPaneOpen] = useState(false);
-  useEffect(() => {
-    if (openDrawer) {
-      setPaneOpen(openDrawer);
-    }
-    console.log(cart);
-  }, [openDrawer]);
+  const [navbarCart, setnavbarCart] = useState(false);
   return (
     <>
       <header>
@@ -26,7 +19,7 @@ export default function Navbar({ openDrawer, cart }) {
               <Link to="/catalog">Catalog</Link>
             </li>
             <li
-              onClick={() => setPaneOpen(!paneOpen)}
+              onClick={() => setnavbarCart(!navbarCart)}
               className="mr-40 cursor-pointer"
             >
               Cart
@@ -34,21 +27,7 @@ export default function Navbar({ openDrawer, cart }) {
           </ul>
         </nav>
       </header>
-      <SlidingPane
-        width="20rem"
-        isOpen={paneOpen}
-        onRequestClose={() => setPaneOpen(false)}
-      >
-        {cart //Check if the list is not empty
-          ? cart.map((item, i) => (
-              <div key={i} className="text-center">
-                <div className="truncate">{item.title}</div>
-                <div>{item.price}</div>
-                <img width="50rem" src={item.image} alt={item.title} />
-              </div>
-            ))
-          : null}
-      </SlidingPane>
+      <CartPage openDrawer={openDrawer} cart={cart} navbarCart={navbarCart} />
     </>
   );
 }

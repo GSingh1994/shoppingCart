@@ -26,7 +26,7 @@ export default function Catalog() {
     if (openDrawer) {
       const timer = setTimeout(() => {
         setOpenDrawer(false);
-      }, 1000);
+      }, 2000);
       return () => clearTimeout(timer);
     }
   }, [openDrawer]);

@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import Navbar from "./Navbar";
-import Cart from "./Cart";
 
 export default function Product({ match }) {
   const [item, setItem] = useState([]);
@@ -30,8 +29,6 @@ export default function Product({ match }) {
         <button onClick={handleClick} className="ring-2 p-1	uppercase">
           Add To Cart
         </button>
-
-        <Cart title={item.title} image={item.image} />
       </div>
     </>
   );
