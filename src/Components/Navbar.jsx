@@ -1,9 +1,7 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import CartPage from "./CartPage";
 
 export default function Navbar({ openDrawer, cart }) {
-  const [navbarCart, setnavbarCart] = useState(false);
   return (
     <>
       <header>
@@ -18,16 +16,13 @@ export default function Navbar({ openDrawer, cart }) {
             <li>
               <Link to="/catalog">Catalog</Link>
             </li>
-            <li
-              onClick={() => setnavbarCart(!navbarCart)}
-              className="mr-40 cursor-pointer"
-            >
-              Cart
+            <li className="mr-40 cursor-pointer">
+              <Link to="/CartPage">Cart</Link>
             </li>
           </ul>
         </nav>
       </header>
-      <CartPage openDrawer={openDrawer} cart={cart} navbarCart={navbarCart} />
+      <CartPage openDrawer={openDrawer} cart={cart} />
     </>
   );
 }
