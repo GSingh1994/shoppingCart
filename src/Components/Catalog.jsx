@@ -7,16 +7,15 @@ export default function Catalog() {
   const [storeData, setStoreData] = useState([]);
 
   useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch("https://fakestoreapi.com/products/");
+      const data = await response.json();
+      setStoreData(data);
+    };
     fetchData();
   }, []);
 
-  const fetchData = async () => {
-    const response = await fetch("https://fakestoreapi.com/products/");
-    const data = await response.json();
-    setStoreData(data);
-  };
-
-  function handleClick(category) {
+  function changeCategory(category) {
     setStoreData(category);
   }
 
@@ -26,7 +25,7 @@ export default function Catalog() {
     if (openDrawer) {
       const timer = setTimeout(() => {
         setOpenDrawer(false);
-      }, 2000);
+      }, 1000);
       return () => clearTimeout(timer);
     }
   }, [openDrawer]);
@@ -37,7 +36,13 @@ export default function Catalog() {
     setOpenDrawer(true);
     setCart([
       ...cart,
-      { id: itemId, title: itemTitle, image: itemImage, price: itemPrice },
+      {
+        id: itemId,
+        title: itemTitle,
+        image: itemImage,
+        price: itemPrice,
+        quantity: 0,
+      },
     ]);
   };
 
@@ -46,7 +51,7 @@ export default function Catalog() {
       <Navbar openDrawer={openDrawer} cart={cart} />
 
       <main className="flex container mx-auto py-40">
-        <Sidebar changeCategory={handleClick} />
+        {/* <Sidebar changeCategory={changeCategory} /> */}
 
         <div className=" grid gap-16 grid-cols-3">
           {storeData.map((item) => (

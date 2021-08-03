@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useDebugValue } from "react";
 import SlidingPane from "react-sliding-pane";
 import "react-sliding-pane/dist/react-sliding-pane.css";
 
@@ -11,7 +11,25 @@ export default function CartPage({ openDrawer, cart }) {
     }
   }, [openDrawer]);
 
-  const [quantity, setQuantity] = useState(1);
+  // make copy of old cart to update quantity
+  const [newCart, setNewCart] = useState();
+  useEffect(() => {
+    setNewCart(cart);
+  }, [cart, newCart]);
+
+  const updateQuantity = (id, sign) => {
+    setNewCart(
+      newCart.map((item) =>
+        item.id === id
+          ? {
+              ...item,
+              quantity:
+                sign === "plus" ? (item.quantity += 1) : (item.quantity -= 1),
+            }
+          : item
+      )
+    );
+  };
   return (
     <>
       <section>
@@ -22,24 +40,22 @@ export default function CartPage({ openDrawer, cart }) {
         isOpen={paneOpen}
         onRequestClose={() => setPaneOpen(false)}
       >
-        {cart //Check if the list is not empty
-          ? cart.map((item, i) => (
+        {newCart //Check if the list is not empty
+          ? newCart.map((item, i) => (
               <div key={i} className=" text-center mb-8">
                 <div className="truncate">{item.title}</div>
                 <div>{item.price}</div>
                 <img width="50rem" src={item.image} alt={item.title} />
 
                 <button
-                  onClick={
-                    () => setQuantity((pre) => (pre >= 1 ? (pre -= 1) : 0)) //Avoid -ve quantity
-                  }
+                  onClick={() => updateQuantity(item.id, "minus")}
                   className="ring-2 w-8 "
                 >
                   -
                 </button>
-                <div className="inline m-5">{quantity}</div>
+                <div className="inline m-5">{item.quantity}</div>
                 <button
-                  onClick={() => setQuantity((pre) => (pre += 1))}
+                  onClick={() => updateQuantity(item.id, "plus")}
                   className="ring-2 w-8"
                 >
                   +
