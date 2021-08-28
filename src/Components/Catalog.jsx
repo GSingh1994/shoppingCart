@@ -41,7 +41,7 @@ export default function Catalog() {
         title: itemTitle,
         image: itemImage,
         price: itemPrice,
-        quantity: 0,
+        quantity: 1,
       },
     ]);
   };

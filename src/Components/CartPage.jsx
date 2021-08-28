@@ -1,4 +1,4 @@
-import { useState, useEffect, useDebugValue } from "react";
+import { useState, useEffect } from "react";
 import SlidingPane from "react-sliding-pane";
 import "react-sliding-pane/dist/react-sliding-pane.css";
 
@@ -20,7 +20,7 @@ export default function CartPage({ openDrawer, cart }) {
   const updateQuantity = (id, sign) => {
     setNewCart(
       newCart.map((item) =>
-        item.id === id
+        item.id === id && item.quantity > 0
           ? {
               ...item,
               quantity:
